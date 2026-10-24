@@ -1,2 +1,2 @@
 # java-fundamentals
-core java concepts 
+collection of java programs and coding practice, organized by concepts 
