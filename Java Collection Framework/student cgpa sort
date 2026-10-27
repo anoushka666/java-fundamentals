@@ -1,1 +1,49 @@
 
+import java.util.*;
+
+class Student {
+    String name;
+    double cgpa;
+
+    Student(String name, double cgpa) {
+        this.name = name;
+        this.cgpa = cgpa;
+    }
+
+    public String toString() {
+        return name + " - CGPA: " + cgpa;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        HashMap<String, List<Student>> map = new HashMap<>();
+
+        map.put("CSE", new ArrayList<>());
+        map.put("ECE", new ArrayList<>());
+
+        map.get("CSE").add(new Student("Aman", 8.5));
+        map.get("CSE").add(new Student("Riya", 9.2));
+
+        map.get("ECE").add(new Student("Rahul", 7.8));
+        map.get("ECE").add(new Student("Neha", 8.9));
+
+        for (String dept : map.keySet()) {
+
+            List<Student> students = map.get(dept);
+
+            students.sort(
+                Comparator.comparingDouble(
+                    (Student s) -> s.cgpa
+                ).reversed()
+            );
+
+            System.out.println(dept + ":");
+
+            for (Student s : students) {
+                System.out.println(s);
+            }
+        }
+    }
+}
